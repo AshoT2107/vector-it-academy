@@ -7,6 +7,8 @@ export interface ICourse{
     name: string;
     desc: string;
     mentorId: string;
+    mentorName: string;
+    imgSrc: string;
     links: ILink[];
     tariffs: ITariff[];
     lessons: ILesson[];

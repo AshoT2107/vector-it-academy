@@ -7,9 +7,9 @@ import { NameComponent } from "./core/components/navbar/navbar.component";
     standalone: true,
     template: `
   <app-navbar></app-navbar>
-    <h1>Welcome to {{title}}!</h1>
-
+  <main class="p-3">
     <router-outlet />
+  </main>
   `,
     styles: [],
     imports: [RouterOutlet, NameComponent]
