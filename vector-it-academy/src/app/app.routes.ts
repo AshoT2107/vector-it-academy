@@ -1,15 +1,16 @@
 import { Routes } from '@angular/router';
-import { AdminComponent } from './admin/admin.component';
-import { StudentsComponent } from './students/students.component';
 import { MentorComponent } from './mentor/mentor.component';
-import { NotFoundError } from 'rxjs';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import studentsRoutes from './students/students.routes';
 
 export const routes: Routes = 
 [
-    { path: 'admin', component: AdminComponent },
+    { path: 'admin', loadComponent: ()=>import('./admin/admin.component')},
     { path: 'mentor', component: MentorComponent},
-    { path: 'students', component: StudentsComponent},
+    { 
+        path: 'students', 
+        loadChildren: () => import("./students/students.routes")
+    },
     { path: '**', redirectTo: "not-found"},
     { path: 'not-found', component: NotFoundComponent}
 ];

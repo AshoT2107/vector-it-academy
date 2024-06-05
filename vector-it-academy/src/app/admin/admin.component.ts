@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-admin',
-    template: `Admin`
+    template: `Admin`,
+    standalone: true
 })
 
-export class AdminComponent implements OnInit {
+export default class AdminComponent implements OnInit {
     constructor() { }
 
     ngOnInit() { }

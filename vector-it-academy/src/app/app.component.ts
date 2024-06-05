@@ -1,20 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NameComponent } from "./core/components/navbar/navbar.component";
+import { LayoutService, LayoutType } from './core/layouts/layouts.service';
+import { AsyncPipe } from '@angular/common';
+import { ClassicLayoutComponent } from "./core/layouts/classic.component";
+import { EmptyLayoutComponent } from "./core/layouts/empty.component";
 
 @Component({
     selector: 'app-root',
     standalone: true,
     template: `
-  <app-navbar></app-navbar>
-  <main class="p-3">
-    <router-outlet />
-  </main>
-  `,
+    @switch (layoutService.layoutType$ | async) {
+      @case (layoutTypes.Classic) {
+        <classic-layout/>
+      }
+      @case (layoutTypes.Empty) {
+        <empty-layout/>
+      }
+    }`,
     styles: [],
-    imports: [RouterOutlet, NameComponent]
+    imports: [RouterOutlet, NameComponent, AsyncPipe, ClassicLayoutComponent, EmptyLayoutComponent]
 })
 
 export class AppComponent {
-  title = 'Vector IT Academy';
+  
+  layoutService = inject(LayoutService);
+  layoutTypes = LayoutType;
 }
