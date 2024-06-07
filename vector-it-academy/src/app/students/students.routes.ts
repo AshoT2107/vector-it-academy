@@ -1,13 +1,20 @@
 import { Routes } from '@angular/router';
+import { courseResolver } from './resolvers/course.resolver';
 
 export default [
-    { 
+    {
         path: '', 
         pathMatch: "full",
-        loadComponent: ()=>import('./students.component').then(c => c.StudentsComponent)
+        redirectTo: "courses"
+    },
+    { 
+        path: 'courses', 
+        loadComponent: () => import('./students.component').then(c => c.StudentsComponent),
+        
     },
     {
-        path: 'course-item',
-        loadComponent: () => import("../shared/components/course-item/course-item.component").then(c=>c.CourseItemComponent)
+        path: "courses/:id",
+        resolve: {courseDetails: courseResolver},
+        loadComponent: ()=>import("./student-courses/course-details/course-details.component")
     }
 ] as Routes

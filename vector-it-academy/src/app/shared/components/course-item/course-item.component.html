@@ -16,6 +16,7 @@
         <span class="italic"> {{item.mentorName}}</span>
     </div>
     <div class="mt-2 border-t pt-2 flex justify-end">
-    <button mat-flat-button color="primary">{{purchased ? "Continue" : "Join"}}</button>
+    <button mat-flat-button [color]="purchased ? 'primary' : 'accent'" (click)="onButtonClick(item.id)">
+        {{purchased ? "Continue" : "Join"}}</button>
     </div>
 </article>

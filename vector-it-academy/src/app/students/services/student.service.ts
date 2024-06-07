@@ -6,11 +6,12 @@ import { Observable, of } from 'rxjs';
 export interface ICoursesResponse{
     purchased: ICourse[];
     others: ICourse[];
+    all?: ICourse[];
 }
 
 const res:ICoursesResponse= {
     purchased: [{
-        id: "assdasda",
+        id: "assdgjhdsdfsfasda",
         name: "Angular Advanced",
         desc: "akjflalskhf askldjklsajd kljasdkljsakl daksjdklsaj aslkjfklasjfkl aflskjklajflkdjl afdfsdfsdf",
         mentorId: "mentorid123",
@@ -22,7 +23,7 @@ const res:ICoursesResponse= {
         lessons: [],
     }],
     others: [{
-        id: "assdasda",
+        id: "assdsdfhasdasda",
         name: "React Advanced",
         desc: "akjflalskhf askldjklsajd kljasdkljsakl daksjdklsaj aslkjfklasjfkl aflskjklajflkdjl afdfsdfsdf",
         mentorId: "mentorid123",
@@ -34,7 +35,7 @@ const res:ICoursesResponse= {
         lessons: [],
     },
     {
-        id: "assdasda",
+        id: "assdasdfsdfsda",
         name: "Nodejs Advanced",
         desc: "akjflalskhf askldjklsajd kljasdkljsakl daksjdklsaj aslkjfklasjfkl aflskjklajflkdjl afdfsdfsdf",
         mentorId: "mentorid123",
@@ -47,6 +48,8 @@ const res:ICoursesResponse= {
     }]
 };
 
+res.all = [...res.others, ...res.purchased];
+
 @Injectable({providedIn: 'root'})
 export class StudentsService {
     private httpClient$ = inject(HttpClient)
@@ -54,5 +57,10 @@ export class StudentsService {
     getAllCourses(): Observable<{purchased: ICourse[]; others: ICourse[]}>{
         // return this.httpClient$.get<{purchased: ICourse[]; others: ICourse[]}>('api')
         return of(res);
+    }
+
+    getCourse(id:string): Observable<ICourse | undefined >{
+        return of(res.all?.find(course=>course.id === id));
+        // return this.httpClient$.get<ICourse>('api')
     }
 }

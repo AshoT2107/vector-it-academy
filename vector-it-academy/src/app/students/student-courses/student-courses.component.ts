@@ -9,7 +9,7 @@ import { ICoursesResponse, StudentsService } from '../services/student.service';
     imports: [CourseItemComponent]
 })
 
-export class StudentCoursesComponent implements OnInit {
+export default class StudentCoursesComponent implements OnInit {
     studentService = inject(StudentsService);
 
     allCourses?: ICoursesResponse;
