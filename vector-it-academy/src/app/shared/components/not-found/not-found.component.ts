@@ -1,6 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { LayoutService, LayoutType } from '../../../core/layouts/layouts.service';
 
 @Component({
     selector: 'not-found',
@@ -20,11 +19,5 @@ import { LayoutService, LayoutType } from '../../../core/layouts/layouts.service
     imports: [RouterLink]
 })
 
-export class NotFoundComponent implements OnInit{
-
-  layoutService = inject(LayoutService);
-
-  ngOnInit(): void {
-    this.layoutService.layoutType$.next(LayoutType.Empty);
-  }
+export class NotFoundComponent{
 }

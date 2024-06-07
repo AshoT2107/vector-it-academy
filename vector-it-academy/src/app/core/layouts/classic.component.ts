@@ -10,7 +10,7 @@ import { NameComponent } from "../components/navbar/navbar.component";
     <router-outlet />
   </main>`,
     standalone: true,
-    imports: [
+    imports: [ 
         RouterOutlet,
         NameComponent]
 })

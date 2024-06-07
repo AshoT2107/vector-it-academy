@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
 export enum LayoutType{
-    Classic, Empty
+    Classic, Modern
 }
 
 @Injectable({providedIn: 'root'})
 export class LayoutService {
-    layoutType$ = new BehaviorSubject(LayoutType.Classic);
+    layoutType$ = new BehaviorSubject(LayoutType.Modern);
 }
